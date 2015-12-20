@@ -133,9 +133,9 @@ class JMCarouselCollection: UIView,UICollectionViewDelegate,UICollectionViewData
     {
         super.layoutSubviews()
         //布局collection
-        collection.frame = self.bounds
+        collection.frame = self.frame
         
-        layout.itemSize = self.bounds.size
+        layout.itemSize = self.frame.size
         
         //布局pageControl
         let pW = collection.frame.width
