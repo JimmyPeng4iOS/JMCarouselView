@@ -10,40 +10,47 @@ import UIKit
 
 class ScrollTestViewController: UITableViewController
 {
+    
+    var headerView: JMCarouselScrollView?
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
         
-        /**
-        初始化方法1,传入图片URL数组,以及pageControl的当前page点的颜色,特别注意需要SDWebImage框架支持
+    /**
+    初始化方法1,传入图片URL数组,以及pageControl的当前page点的颜色,特别注意需要SDWebImage框架支持
         
-        - parameter frame:          frame
-        - parameter imgURLArray:  图片URL数组
-        - parameter pagePointColor: pageControl的当前page点的颜色
+    - parameter frame:          frame
+    - parameter imgURLArray:    图片URL数组
+    - parameter pagePointColor: pageControl的当前page点的颜色
+    - parameter stepTime:       广告每一页停留时间
         
-        - returns: ScrollView图片轮播器
-        */
-        tableView.tableHeaderView = JMCarouselScrollView(frame: CGRect(x: 0, y: 0, width: 375, height: 220), imageURLArray: urlStringArr(), pagePointColor: UIColor.whiteColor())
+    - returns: ScrollView图片轮播器
+    */
         
+        headerView = JMCarouselScrollView(frame: CGRect(x: 0, y: 0, width: 375, height: 220), imageURLArray: urlStringArr(), pagePointColor: UIColor.whiteColor(), stepTime: 2.0)
         
+
         
+    /**
+    初始化方法2,传入图片数组,以及pageControl的当前page点的颜色,无需依赖第三方库
         
-        /**
-        初始化方法2,传入图片数组,以及pageControl的当前page点的颜色,无需依赖第三方库
+    - parameter frame:          frame
+    - parameter imgArray:       图片数组
+    - parameter pagePointColor: pageControl的当前page点的颜色
+    - parameter stepTime:       广告每一页停留时间
         
-        - parameter frame:          frame
-        - parameter imgArray:     图片数组
-        - parameter pagePointColor: pageControl的当前page点的颜色
-        
-        - returns: ScrollView图片轮播器
-        */
+    - returns: ScrollView图片轮播器
+    */
 
         /*
-        tableView.tableHeaderView = JMCarouselScrollView(frame: CGRect(x: 0, y: 0, width: 375, height: 220), imageArray: imgArr(), pagePointColor: UIColor.whiteColor())
+        headerView = JMCarouselScrollView(frame: CGRect(x: 0, y: 0, width: 375, height: 220), imageArray: imgArr(), pagePointColor: UIColor.whiteColor(), stepTime: 1.0)
 
         */
+        
+        tableView.tableHeaderView = headerView
+        
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
     }
@@ -89,6 +96,17 @@ class ScrollTestViewController: UITableViewController
         cell.textLabel?.text =  "ScrollTestViewController \(indexPath.row)"
         
         return cell
+    }
+    
+    //MARK:释放
+    override func viewWillDisappear(animated: Bool)
+    {
+        headerView?.stopTimer()
+    }
+    
+    deinit
+    {
+        print("scrollVC Deinit")
     }
 
 }

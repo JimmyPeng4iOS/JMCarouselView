@@ -16,22 +16,24 @@ class JMCarouselScrollView: UIView,UIScrollViewDelegate
 {
     //MARK: - 属性
     //是否URL加载
-    var isFromURL:Bool  = true
+    private var isFromURL:Bool  = true
     //页码
-    var index:Int       = 0
+    private var index:Int       = 0
     //图片数量
-    var imgViewNum:Int  = 0
+    private var imgViewNum:Int  = 0
     //宽度
-    var sWidth:CGFloat  = 0
+    private var sWidth:CGFloat  = 0
     //高度
-    var sHeight:CGFloat = 0
-
+    private var sHeight:CGFloat = 0
+    //广告每一页停留时间
+    private var pageStepTime:NSTimeInterval  = 0
+    
     //定时器
-    var timer:NSTimer?
+    private var timer:NSTimer?
     //图片数组
-    var imgArray: [UIImage]?
+    private var imgArray: [UIImage]?
     //图片url数组
-    var imgURLArray:[String]?
+    private var imgURLArray:[String]?
     
     
     //MARK: - 初始化方法
@@ -39,18 +41,19 @@ class JMCarouselScrollView: UIView,UIScrollViewDelegate
     初始化方法1,传入图片URL数组,以及pageControl的当前page点的颜色,特别注意需要SDWebImage框架支持
     
     - parameter frame:          frame
-    - parameter imgURLArray:  图片URL数组
+    - parameter imgURLArray:    图片URL数组
     - parameter pagePointColor: pageControl的当前page点的颜色
+    - parameter stepTime:       广告每一页停留时间
     
     - returns: ScrollView图片轮播器
     */
-    init(frame: CGRect, imageURLArray:[String], pagePointColor: UIColor)
+    init(frame: CGRect, imageURLArray:[String], pagePointColor: UIColor, stepTime: NSTimeInterval)
     {
         super.init(frame: frame)
         
         imgURLArray = imageURLArray
         
-        prepareUI(imageURLArray.count, pagePointColor: pagePointColor)
+        prepareUI(imageURLArray.count, pagePointColor: pagePointColor,stepTime: stepTime)
         
     }
     
@@ -58,12 +61,13 @@ class JMCarouselScrollView: UIView,UIScrollViewDelegate
      初始化方法2,传入图片数组,以及pageControl的当前page点的颜色,无需依赖第三方库
      
      - parameter frame:          frame
-     - parameter imgArray:     图片数组
+     - parameter imgArray:       图片数组
      - parameter pagePointColor: pageControl的当前page点的颜色
+     - parameter stepTime:       广告每一页停留时间
      
      - returns: ScrollView图片轮播器
      */
-    init(frame: CGRect, imageArray:[UIImage], pagePointColor: UIColor)
+    init(frame: CGRect, imageArray:[UIImage], pagePointColor: UIColor, stepTime: NSTimeInterval)
     {
         super.init(frame: frame)
         
@@ -71,7 +75,7 @@ class JMCarouselScrollView: UIView,UIScrollViewDelegate
         
         isFromURL = false
         
-        prepareUI(imageArray.count, pagePointColor: pagePointColor)
+        prepareUI(imageArray.count, pagePointColor: pagePointColor,stepTime: stepTime)
         
     }
     
@@ -81,10 +85,13 @@ class JMCarouselScrollView: UIView,UIScrollViewDelegate
     }
     
     //MARK: - 准备UI
-    func prepareUI(numberOfImage:Int, pagePointColor: UIColor)
+    private func prepareUI(numberOfImage:Int, pagePointColor: UIColor,stepTime: NSTimeInterval)
     {
         //设置图片数量
-        imgViewNum = numberOfImage;
+        imgViewNum = numberOfImage
+        //广告每一页停留时间
+        pageStepTime = stepTime
+        
         //添加scrollView
         addSubview(ScrollView)
         //添加pageControl
@@ -129,11 +136,16 @@ class JMCarouselScrollView: UIView,UIScrollViewDelegate
         pageControl.frame = CGRect(x: pX, y: pY, width: pW, height: pH)
     }
     
+    deinit
+    {
+        print("scrollDeinit")
+    }
+    
     //MARK: - 创建广告图片
     /**
     *  创建广告图片
     */
-    func prepareImage()
+    private func prepareImage()
     {
         
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -207,11 +219,20 @@ class JMCarouselScrollView: UIView,UIScrollViewDelegate
     /**
      *  执行下一页的方法
      */
-    func next()
-    {
-        index++;
+    @objc private func nextImage()
+    {   //取得当前pageControl页码
+        var indexP = self.pageControl.currentPage
         
-        ScrollView.setContentOffset(CGPoint(x: CGFloat(index) * sWidth, y: 0), animated: true)
+        if indexP == imgViewNum
+        {
+            indexP = 1;
+        }
+        else
+        {
+            indexP++;
+        }
+        
+        ScrollView.setContentOffset(CGPoint(x: CGFloat(indexP + 1) * sWidth, y: 0), animated: true)
     }
     
     
@@ -225,7 +246,6 @@ class JMCarouselScrollView: UIView,UIScrollViewDelegate
     {
         carousel()
     }
-    
     
     /**
      *  拖拽减速时的判断
@@ -248,6 +268,7 @@ class JMCarouselScrollView: UIView,UIScrollViewDelegate
         {
             //瞬间跳转第1页
             ScrollView.setContentOffset(CGPoint(x: sWidth, y: 0), animated: false)
+            index = 1
         }
             //如果是第0页
         else if page == 0
@@ -267,9 +288,9 @@ class JMCarouselScrollView: UIView,UIScrollViewDelegate
         //获取偏移值
         let offset = ScrollView.contentOffset.x - sWidth;
         //页码
-        index = Int((offset + sWidth / 2.0) / sWidth);
+        let pageIndex = Int((offset + sWidth / 2.0) / sWidth);
         
-        pageControl.currentPage = index
+        pageControl.currentPage = pageIndex
         
     }
     
@@ -278,7 +299,14 @@ class JMCarouselScrollView: UIView,UIScrollViewDelegate
      */
     func scrollViewWillBeginDragging(scrollView: UIScrollView)
     {
-        
+        stopTimer()
+    }
+    
+    /**
+     销毁timer
+     */
+    func stopTimer()
+    {
         timer?.invalidate()
         
         timer = nil
@@ -293,9 +321,9 @@ class JMCarouselScrollView: UIView,UIScrollViewDelegate
     }
     
     //MARK:设置timer
-    func setTheTimer()
+    private func setTheTimer()
     {
-        timer = NSTimer.scheduledTimerWithTimeInterval(1.5, target: self, selector: "next", userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(pageStepTime, target: self, selector: "nextImage", userInfo: nil, repeats: true)
         
         let runloop = NSRunLoop.currentRunLoop()
         

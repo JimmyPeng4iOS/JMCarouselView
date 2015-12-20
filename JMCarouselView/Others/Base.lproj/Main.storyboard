@@ -33,6 +33,12 @@
                                     <action selector="goToCollectionView" destination="BYZ-38-t0r" eventType="touchUpInside" id="f79-3e-Etd"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="ha" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="riM-rs-XAE">
+                                <rect key="frame" x="67" y="213" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.092136483640684275" green="0.68403011245545242" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -42,6 +48,11 @@
                             <constraint firstItem="FDX-dv-Caz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="200" id="lOG-Lr-N1R"/>
                             <constraint firstItem="SG2-XC-qxv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mMF-Ns-6Fi"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="riM-rs-XAE"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="qfX-io-otL"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
