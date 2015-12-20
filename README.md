@@ -18,35 +18,29 @@
 
 * 初始化方法1 -- 网络加载
 
-```
+```objective-c
      /**
     初始化方法1,传入图片URL数组,以及pageControl的当前page点的颜色,特别注意需要SDWebImage框架支持
-        
     - parameter frame:          frame
     - parameter imgURLArray:    图片URL数组
     - parameter pagePointColor: pageControl的当前page点的颜色
     - parameter stepTime:       广告每一页停留时间
-        
     - returns: ScrollView图片轮播器
     */
-
     tableView.tableHeaderView = JMCarouselScrollView(frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220), imageURLArray: urlStringArr(), pagePointColor: UIColor.whiteColor(), stepTime: 2.0)
 ```
 
 * 初始化方法2 -- 本地加载
 
-```
+```objective-c
         /**
         初始化方法2,传入图片数组,以及pageControl的当前page点的颜色,无需依赖第三方库
-        
         - parameter frame:          frame
         - parameter imgArray:       图片数组
         - parameter pagePointColor: pageControl的当前page点的颜色
         - parameter stepTime:       广告每一页停留时间
-        
         - returns: ScrollView图片轮播器
         */
-        
           tableView.tableHeaderView = JMCarouselScrollView(frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220), imageArray: imgArr(), pagePointColor: UIColor.whiteColor(), stepTime: 1.0)
 ```
 ScrollView是采用前后添加一张图片,然后到达多出来的两张图片瞬间跳转(肉眼观察不到)的方式来实现无限轮播
@@ -56,32 +50,27 @@ ScrollView是采用前后添加一张图片,然后到达多出来的两张图片
 
 * 初始化方法1 -- 网络加载
 
-```
+```objective-c
      /**
     初始化方法1,传入图片URL数组,以及pageControl的当前page点的颜色,特别注意需要SDWebImage框架支持
-        
     - parameter frame:          frame
     - parameter imgURLArray:    图片URL数组
     - parameter pagePointColor: pageControl的当前page点的颜色
-    - parameter stepTime:       广告每一页停留时间
-        
+    - parameter stepTime:       广告每一页停留时间  
     - returns: ScrollView图片轮播器
     */
-
     tableView.tableHeaderView = JMCarouselCollection(frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220), imageURLArray: urlStringArr(), pagePointColor: UIColor.whiteColor(), stepTime: 2.0)
 ```
 
 * 初始化方法2 -- 本地加载
 
-```
+```objective-c
         /**
         初始化方法2,传入图片数组,以及pageControl的当前page点的颜色,无需依赖第三方库
-        
         - parameter frame:          frame
         - parameter imgArray:       图片数组
         - parameter pagePointColor: pageControl的当前page点的颜色
         - parameter stepTime:       广告每一页停留时间
-        
         - returns: ScrollView图片轮播器
         */
         
@@ -101,15 +90,13 @@ CollectionView是添加大量的组,每一组的items就是需要展示的图片
 eg.
 
 
-```
+```objective-c
     var headerView: JMCarouselCollection?
-
     headerView =JMCarouselCollection(xxxxxxxx) 
-
     tableView.tableHeaderView = headerView
 ```
 
-```
+```objective-c
     //MARK:释放
     override func viewWillDisappear(animated: Bool)
     {
