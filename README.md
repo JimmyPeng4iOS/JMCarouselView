@@ -27,7 +27,11 @@
     - parameter stepTime:       广告每一页停留时间
     - returns: ScrollView图片轮播器
     */
-    tableView.tableHeaderView = JMCarouselScrollView(frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220), imageURLArray: urlStringArr(), pagePointColor: UIColor.whiteColor(), stepTime: 2.0)
+        headerView = JMCarouselScrollView(
+                                        frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220),
+                                        imageURLArray: urlStringArr(),
+                                        pagePointColor: UIColor.whiteColor(),
+                                        stepTime: 2.0)
 ```
 
 * 初始化方法2 -- 本地加载
@@ -41,7 +45,11 @@
         - parameter stepTime:       广告每一页停留时间
         - returns: ScrollView图片轮播器
         */
-          tableView.tableHeaderView = JMCarouselScrollView(frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220), imageArray: imgArr(), pagePointColor: UIColor.whiteColor(), stepTime: 1.0)
+        headerView = JMCarouselScrollView(
+                                        frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220),
+                                        imgArray: imgArray(),
+                                        pagePointColor: UIColor.whiteColor(),
+                                        stepTime: 2.0)
 ```
 ScrollView是采用前后添加一张图片,然后到达多出来的两张图片瞬间跳转(肉眼观察不到)的方式来实现无限轮播
 
@@ -59,7 +67,11 @@ ScrollView是采用前后添加一张图片,然后到达多出来的两张图片
     - parameter stepTime:       广告每一页停留时间  
     - returns: ScrollView图片轮播器
     */
-    tableView.tableHeaderView = JMCarouselCollection(frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220), imageURLArray: urlStringArr(), pagePointColor: UIColor.whiteColor(), stepTime: 2.0)
+        headerView = JMCarouselCollection(
+                                        frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220),
+                                        imageURLArray: urlStringArr(),
+                                        pagePointColor: UIColor.whiteColor(),
+                                        stepTime: 2.0)
 ```
 
 * 初始化方法2 -- 本地加载
@@ -74,7 +86,11 @@ ScrollView是采用前后添加一张图片,然后到达多出来的两张图片
         - returns: ScrollView图片轮播器
         */
         
-          tableView.tableHeaderView = JMCarouselCollection(frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220), imageArray: imgArr(), pagePointColor: UIColor.whiteColor(), stepTime: 1.0)
+        headerView = JMCarouselCollection(
+                                        frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220),
+                                        imgArray: imgArray(),
+                                        pagePointColor: UIColor.whiteColor(),
+                                        stepTime: 2.0)
 ```
 
 CollectionView是添加大量的组,每一组的items就是需要展示的图片,来实现伪无限轮播,由于SDWebImage自带缓存功能, 使用本地的方式也会去下载,该方法不会浪费用户流量
