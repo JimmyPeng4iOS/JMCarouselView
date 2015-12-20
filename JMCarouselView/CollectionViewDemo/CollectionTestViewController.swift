@@ -29,7 +29,11 @@ class CollectionTestViewController: UITableViewController
     - returns: CollectionView图片轮播器
     */
         
-        headerView = JMCarouselCollection(frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220), imageURLArray: urlStringArr(), pagePointColor: UIColor.whiteColor(), stepTime: 2.0)
+        headerView = JMCarouselCollection(
+                                        frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220),
+                                        imageURLArray: urlStringArr(),
+                                        pagePointColor: UIColor.whiteColor(),
+                                        stepTime: 2.0)
         
         
     /**
@@ -44,7 +48,11 @@ class CollectionTestViewController: UITableViewController
     */
         
         /*
-        headerView = JMCarouselCollection(frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220), imageURLArray: urlStringArr(), pagePointColor: UIColor.whiteColor(), stepTime: 2.0)
+        headerView = JMCarouselCollection(
+                                        frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220),
+                                        imgArray: imgArray(),
+                                        pagePointColor: UIColor.whiteColor(),
+                                        stepTime: 2.0)
         */
         
         tableView.tableHeaderView = headerView
