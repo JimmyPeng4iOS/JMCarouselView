@@ -49,14 +49,14 @@ class ScrollTestViewController: UITableViewController
     - returns: ScrollView图片轮播器
     */
 
-        /*
-        headerView = JMCarouselScrollView(
-                                        frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220),
-                                        imgArray: imgArray(),
-                                        pagePointColor: UIColor.whiteColor(),
-                                        stepTime: 2.0)
+        
+//        headerView = JMCarouselScrollView(
+//                                        frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220),
+//                                        imageArray: imgArr(),
+//                                        pagePointColor: UIColor.whiteColor(),
+//                                        stepTime: 2.0)
 
-        */
+
         
         tableView.tableHeaderView = headerView
         
@@ -85,7 +85,7 @@ class ScrollTestViewController: UITableViewController
         
         for i in 0 ..< 5
         {
-            let urlStr = "http://7xpbws.com1.z0.glb.clouddn.com/JMCarouselViewIMGimg_0\(i+1).png"
+            let urlStr = "http://7xpbws.com1.z0.glb.clouddn.com/JMCarouselViewimg_0\(i+1).png"
             
             arr.append(urlStr)
         }

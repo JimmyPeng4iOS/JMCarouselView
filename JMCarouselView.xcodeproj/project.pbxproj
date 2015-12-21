@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF6FE9511C27F1A500DEDCF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF6FE9501C27F1A500DEDCF3 /* Assets.xcassets */; };
 		BF86E7501C223DC300EC980A /* ScrollTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF86E74F1C223DC300EC980A /* ScrollTestViewController.swift */; };
 		BF86E7521C223DD600EC980A /* CollectionTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF86E7511C223DD600EC980A /* CollectionTestViewController.swift */; };
 		BF86E7541C223E0F00EC980A /* JMCarouselCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF86E7531C223E0F00EC980A /* JMCarouselCollection.swift */; };
 		BF86E7561C22411400EC980A /* JMCarouselScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF86E7551C22411400EC980A /* JMCarouselScrollView.swift */; };
 		BF9E0ACA1C2590AF00CC1395 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9E0AC31C2590AF00CC1395 /* AppDelegate.swift */; };
-		BF9E0ACB1C2590AF00CC1395 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BF9E0AC41C2590AF00CC1395 /* Assets.xcassets */; };
 		BF9E0ACC1C2590AF00CC1395 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF9E0AC51C2590AF00CC1395 /* LaunchScreen.storyboard */; };
 		BF9E0ACD1C2590AF00CC1395 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF9E0AC71C2590AF00CC1395 /* Main.storyboard */; };
 		BF9E0AF31C2590C000CC1395 /* MKAnnotationView+WebCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9E0AD31C2590C000CC1395 /* MKAnnotationView+WebCache.m */; };
@@ -36,6 +36,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF6FE9501C27F1A500DEDCF3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF86E7371C223B1800EC980A /* JMCarouselView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JMCarouselView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF86E73C1C223B1800EC980A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BF86E74F1C223DC300EC980A /* ScrollTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollTestViewController.swift; sourceTree = "<group>"; };
@@ -43,7 +44,6 @@
 		BF86E7531C223E0F00EC980A /* JMCarouselCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMCarouselCollection.swift; sourceTree = "<group>"; };
 		BF86E7551C22411400EC980A /* JMCarouselScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JMCarouselScrollView.swift; sourceTree = "<group>"; };
 		BF9E0AC31C2590AF00CC1395 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		BF9E0AC41C2590AF00CC1395 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BF9E0AC61C2590AF00CC1395 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BF9E0AC81C2590AF00CC1395 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BF9E0AD21C2590C000CC1395 /* MKAnnotationView+WebCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKAnnotationView+WebCache.h"; sourceTree = "<group>"; };
@@ -152,10 +152,10 @@
 			isa = PBXGroup;
 			children = (
 				BF9E0AC31C2590AF00CC1395 /* AppDelegate.swift */,
-				BF9E0AC41C2590AF00CC1395 /* Assets.xcassets */,
 				BF9E0AC51C2590AF00CC1395 /* LaunchScreen.storyboard */,
 				BF9E0AC71C2590AF00CC1395 /* Main.storyboard */,
 				BF9E0B051C25919A00CC1395 /* Info.plist */,
+				BF6FE9501C27F1A500DEDCF3 /* Assets.xcassets */,
 			);
 			path = Others;
 			sourceTree = "<group>";
@@ -269,8 +269,8 @@
 			files = (
 				BF9E0B061C25919A00CC1395 /* Info.plist in Resources */,
 				BF9E0ACD1C2590AF00CC1395 /* Main.storyboard in Resources */,
+				BF6FE9511C27F1A500DEDCF3 /* Assets.xcassets in Resources */,
 				BF9E0ACC1C2590AF00CC1395 /* LaunchScreen.storyboard in Resources */,
-				BF9E0ACB1C2590AF00CC1395 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
