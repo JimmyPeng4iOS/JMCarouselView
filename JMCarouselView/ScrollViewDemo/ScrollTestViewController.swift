@@ -33,7 +33,7 @@ class ScrollTestViewController: UITableViewController
                                         frame: CGRect(x: 0, y: 0, width:UIScreen.mainScreen().bounds.width, height: 220),
                                         imageURLArray: urlStringArr(),
                                         pagePointColor: UIColor.whiteColor(),
-                                        stepTime: 2.0)
+                                        stepTime: 1.0)
 
         
 

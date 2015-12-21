@@ -8,7 +8,7 @@
 ---
 #####无间隙循环展示
 
-![JMCarouselView.gif](http://upload-images.jianshu.io/upload_images/1115674-4189b9ef0de2754e.gif?imageMogr2/auto-orient/strip)
+![JMCarouselView.gif](http://upload-images.jianshu.io/upload_images/1115674-58c4a1cdb201392c.gif?imageMogr2/auto-orient/strip)
 
 #使用方法:
 
